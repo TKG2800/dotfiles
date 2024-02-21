@@ -1,0 +1,57 @@
+# ~/.config/starship.toml
+
+# Use custom format
+#format = '''
+# [┌───────────────────>](bold green)
+#[│](bold green)$directory$rust$package
+#[└─>](bold green) '''
+
+# Wait 10 milliseconds for starship to check files under the current directory.
+scan_timeout = 10
+
+# Disable the blank line at the start of the prompt
+add_newline = false
+
+# Set 'foo' as custom color palette
+palette = 'foo'
+
+# Define custom colors
+[palettes.foo]
+# Overwrite existing color
+blue = '21'
+# Define new color
+mustard = '#af8700'
+
+[directory]
+#ディレクトリ表示
+truncation_length = 10
+truncate_to_repo = false
+
+[git_status]
+#Gitのステータス表示用アイコン
+conflicted = "💥"
+ahead = "🏎💨"
+behind = "😰"
+diverged = "😵"
+untracked = "🌚‍"
+stashed = "📦"
+modified = "📝"
+staged = '🔦'
+renamed = "🏷"
+deleted = "🗑"
+
+[[battery.display]]
+#バッテリーを表示するタイミング、表示する際の文字のスタイル
+threshold = 100
+style = "bold blue"
+
+[battery]
+#バッテリーの各状態のアイコン、上からフル充電、充電中、バッテリー残量低下
+full_symbol = "🤗"
+charging_symbol = "😌"
+discharging_symbol = "😨"
+
+[time]
+#時間の表示をオンにして12時間表示に
+disabled = false
+use_12hr = true

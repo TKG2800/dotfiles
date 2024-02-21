@@ -1,0 +1,19 @@
+import = ["~/dotfile/pacakes/alacritty/.config/alacritty/tokyo-night.toml"]
+[env]
+ TERM = "xterm-256color"
+ [shell]
+  program = "/bin/zsh"
+  args = ["-l", "-c", "tmux a -t 0 || tmux -u"]
+[window]
+opacity = 0.9
+startup_mode = "SimpleFullscreen"
+[window.dimensions]
+  columns = 200
+  lines = 60
+[window.padding]
+  x = 8
+  y = 4
+[font]
+[font.normal]
+family = "CartographCF Nerd Font"
+style = "Italic"
