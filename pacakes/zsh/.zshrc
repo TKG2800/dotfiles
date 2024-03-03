@@ -9,3 +9,5 @@ eval "$(starship init zsh)"
 alias ls='lsd'
 alias tree='lsd --tree'
 alias ll='ls -l'
+export FZF_DEFAULT_COMMAND='rg --files --hidden --glob "!.git"'
+export FZF_ALT_C_OPTS="--preview 'tree -C {} | head -200'"

@@ -1,57 +1,194 @@
 # ~/.config/starship.toml
+format = """
+[╭─user───❯](bold blue) $userna$mememory_usage$battery$time
+[┣─system─❯](bold yellow)$hostname$cmd_duration$time
+[┣─project❯](bold red) $directory$git_branch$git_states$git_status
+[╰─cmd────❯](bold green)$package$golang$terraform$docker_context$python$docker_context$nodejs$rust
+"""
+[username]
+style_user = "green bold"
+style_root = "red bold"
+format = "[$user]($style) "
+disabled = false
+show_always = true
 
-# Use custom format
-#format = '''
-# [┌───────────────────>](bold green)
-#[│](bold green)$directory$rust$package
-#[└─>](bold green) '''
+[hostname]
+ssh_only = false
+format = 'on [$hostname](bold purple) '
+trim_at = "."
+disabled = false
 
-# Wait 10 milliseconds for starship to check files under the current directory.
-scan_timeout = 10
+# Replace the "❯" symbol in the prompt with "➜"
+[character] # The name of the module we are configuring is "character"
+success_symbol = "[➜](bold green)" # The "success_symbol" segment is being set to "➜" with the color "bold green"
+error_symbol = "[✗](bold red)"
 
-# Disable the blank line at the start of the prompt
-add_newline = false
-
-# Set 'foo' as custom color palette
-palette = 'foo'
-
-# Define custom colors
-[palettes.foo]
-# Overwrite existing color
-blue = '21'
-# Define new color
-mustard = '#af8700'
-
+# 󰀷 
+# configure directory
 [directory]
-#ディレクトリ表示
+read_only = " "
 truncation_length = 10
-truncate_to_repo = false
-
-[git_status]
-#Gitのステータス表示用アイコン
-conflicted = "💥"
-ahead = "🏎💨"
-behind = "😰"
-diverged = "😵"
-untracked = "🌚‍"
-stashed = "📦"
-modified = "📝"
-staged = '🔦'
-renamed = "🏷"
-deleted = "🗑"
-
-[[battery.display]]
-#バッテリーを表示するタイミング、表示する際の文字のスタイル
-threshold = 100
-style = "bold blue"
-
-[battery]
-#バッテリーの各状態のアイコン、上からフル充電、充電中、バッテリー残量低下
-full_symbol = "🤗"
-charging_symbol = "😌"
-discharging_symbol = "😨"
+truncate_to_repo = true # truncates directory to root folder if in github repo
+# style = "bold italic blue"
 
 [time]
-#時間の表示をオンにして12時間表示に
+format = '[\[ $time \]]($style) '
+time_format = '%T'
+utc_time_offset = '-9'
+
+[cmd_duration]
+min_time = 4
+format = '[\($duration\)]($style)'
+show_milliseconds = true
 disabled = false
-use_12hr = true
+style = 'bold yellow'
+
+[aws]
+symbol = "  "
+
+[conda]
+symbol = " "
+
+[dart]
+symbol = " "
+
+[docker_context]
+symbol = " "
+format = "via [$symbol$context]($style) "
+style = "blue bold"
+only_with_files = true
+detect_files = ["docker-compose.yml", "docker-compose.yaml", "Dockerfile"]
+detect_folders = []
+disabled = false
+
+[elixir]
+symbol = " "
+
+[elm]
+symbol = " "
+
+[git_branch]
+symbol = " "
+
+[git_status]
+format = '([\[$all_status$ahead_behind\]]($style) )'
+stashed = "[${count}*](green)"
+modified = "[${count}+](yellow)"
+deleted = "[${count}-](red)"
+conflicted = "[${count}~](red)"
+ahead = "⇡${count}"
+behind = "⇣${count}"
+untracked = "[${count}?](blue)"
+staged = "[${count}+](green)"
+
+[git_state]
+style = "bold red"
+format = "[$state( $progress_current/$progress_total) ]($style)"
+rebase = "rebase"
+merge = "merge"
+revert = "revert"
+cherry_pick = "cherry"
+bisect = "bisect"
+am = "am"
+am_or_rebase = "am/rebase"
+
+[golang]
+symbol = " "
+
+[hg_branch]
+symbol = " "
+
+[java]
+symbol = " "
+
+[julia]
+symbol = " "
+
+[haskell]
+symbol = "λ "
+
+[memory_usage]
+symbol = "󰍛 "
+
+[nim]
+symbol = " "
+
+[nix_shell]
+symbol = " "
+
+[package]
+symbol = " "
+
+[perl]
+symbol = " "
+
+[php]
+symbol = " "
+
+[python]
+symbol = " "
+#pyenv_version_name = true
+format = 'via [${symbol}python (${version} )(\($virtualenv\) )]($style)'
+style = "bold yellow"
+pyenv_prefix = "venv "
+python_binary = ["./venv/bin/python", "python", "python3", "python2"]
+detect_extensions = ["py"]
+version_format = "v${raw}"
+
+[ruby]
+symbol = " "
+
+[rust]
+symbol = " "
+
+[scala]
+symbol = " "
+
+[shlvl]
+symbol = " "
+
+[swift]
+symbol = "ﯣ "
+
+[nodejs]
+format = "via [ Node.js $version](bold green) "
+detect_files = ["package.json", ".node-version"]
+detect_folders = ["node_modules"]
+
+[battery]
+format = '[$symbol]($style)'
+unknown_symbol = ''
+
+[[battery.display]]
+threshold = 5
+charging_symbol = '⚡️ '
+discharging_symbol = ' '
+style = 'bright-red'
+
+[[battery.display]]
+threshold = 15
+charging_symbol = '⚡️ '
+discharging_symbol = ' '
+style = 'red'
+
+[[battery.display]]
+threshold = 40
+charging_symbol = '⚡️ '
+discharging_symbol = ' '
+style = 'yellow'
+
+[[battery.display]]
+threshold = 80
+charging_symbol = '⚡️ '
+discharging_symbol = ' '
+style = 'green'
+
+[[battery.display]]
+threshold = 100
+charging_symbol = '⚡️ '
+discharging_symbol = ' '
+style = 'green'
+
+[[battery.display]]
+threshold = 25
+style = 'yellow'

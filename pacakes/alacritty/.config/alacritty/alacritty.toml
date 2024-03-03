@@ -1,11 +1,12 @@
 import = ["~/dotfile/pacakes/alacritty/.config/alacritty/tokyo-night.toml"]
+live_config_reload = true
 [env]
  TERM = "xterm-256color"
  [shell]
   program = "/bin/zsh"
   args = ["-l", "-c", "tmux a -t 0 || tmux -u"]
 [window]
-opacity = 0.9
+opacity = 0.7
 startup_mode = "SimpleFullscreen"
 [window.dimensions]
   columns = 200
@@ -13,7 +14,16 @@ startup_mode = "SimpleFullscreen"
 [window.padding]
   x = 8
   y = 4
+[cursor]
+  unfocused_hollow = true
+  blink_interval = 400
+[cursor.style]
+  shape = "Beam"
+  blinking = "Always"
+[scrolling]
+  history = 10000
 [font]
+size = 14
 [font.normal]
 family = "CartographCF Nerd Font"
 style = "Italic"

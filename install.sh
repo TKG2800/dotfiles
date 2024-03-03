@@ -15,4 +15,4 @@ if [ ! -d ~/.config ]; then
   mkdir ~/.config
 fi
 
-stow  -v -d ~/dotfiles/pacakes -t ~ zsh starship alacritty nvim
+stow  -v -d ~/dotfiles/pacakes -t ~ zsh starship alacritty nvim tmux vim neofetch
