@@ -7,3 +7,4 @@ dotfiles/vim/.vim/backup/*
 # gitkeep
 pacakes/nvim/.config/nvim/lazy-lock.json
 pacakes/lvim/.config/lvim/lazy-lock.json
+pacakes/nvim/.config/nvim/lazy-lock.json
