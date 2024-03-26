@@ -14,4 +14,4 @@ eval "$(zoxide init zsh)"
 export FZF_DEFAULT_COMMAND='rg --files --hidden --glob "!.git"'
 export FZF_ALT_C_OPTS="--preview 'tree -C {} | head -200'"
 export PATH="$HOME/.local/bin:$PATH"
-
+export PATH=$PATH:/Users/iwamatsutakumi/go/bin
