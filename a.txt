@@ -1,6 +1,5 @@
-# dotfifes
-
-*root
+.
+├── a.txt
 ├── Brewfile
 ├── install
 ├── packages
@@ -17,9 +16,11 @@
 │   │               ├── plugin_manager.lua
 │   │               └── plugins
 │   │                   └── oil.lua
+│   ├── starship
+│   │   └── .config
+│   │       └── starship.toml
 │   ├── vim
 │   │   └── .vimrc
 │   └── zsh
 │       └── .zshrc
 └── README.md
-
