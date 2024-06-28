@@ -13,5 +13,8 @@ fi
 
 brew bundle -v --file=~/dotfiles/Brewfile
 
+find ~/dotfiles -name .DS_Store -delete
+
 stow -v -d ~/dotfiles/packages -t ~ zsh vim nvim starship alacritty tmux
 
+bash -c "$(curl --fail --show-error --silent --location https://raw.githubusercontent.com/zdharma-continuum/zinit/HEAD/scripts/install.sh)"
