@@ -1,7 +1,7 @@
 <!--TODO: image_bar -->
 # TKG2800's dotfiles
 
-[![make test](https://github.com/TKG2800/dotfiles/workflow/make%20test/badge.svg)]
+[![make test](https://github.com/TKG2800/dotfiles/workflow/make%20test/badge.svg)]<br/>
 **Table of Contents**
   - [Introduction](#introduction)
     - [Requirements](#requirements)
