@@ -1,49 +1,66 @@
+<!--TODO: image_bar -->
 # TKG2800's dotfiles
+
+[![make test](https://github.com/TKG2800/dotfiles/workflow/make%20test/badge.svg)]
 **Table of Contents**
- - [Introduction](#introduction)
+  - [Introduction](#introduction)
+    - [Requirements](#requirements)
+    - [What's this](#whats-this)
+    - [Toolset](#toolset)
+    - [Contents](#contents)
+  - Setup
+    - [Alacritty](#alacritty-setup)
+    - [Zsh](#zsh-setup)
+    - [Starship](#starship-setup)
+    - [Tmux](#tmux-setup)
+    - [Git](#git-setup)
+    - [Neovim](#neovim-setup)
+    - [Vim](#vim-setup)
 <!-- NOTE: dotfilesを作り直しました -->
 ## Introduction
+### Requirements
+ macOS / linux
 ### What's this
-Homebrew(Package Manager) + Raycast(launcher) + Alacritty(terminal emulator) + Zsh(shell) + tmux + sharship(prompt) + Neovim(editor)
+Alacritty(terminal emulator) + Zsh(shell) + Neovim(editor)
 ### Toolset
-### Content
+- Homebrew(Package Manager) + Raycast(launcher)
+- Alacritty(terminal emulator)
+- Zsh(shell) + sharship(prompt) + tmux 
+- Neovim(editor)
 ### Contents
-
-<!-- 1. はじめに
-  - ドットファイルとは
-  - このリポジトリについて
-  - 使用環境と互換性
-2. インストールとセットアップ
-  - 前提条件
-  - リポジトリのクローン方法
-  - stowを使用したインストール方法
-  - 環境設定とカスタマイズの基本
-3. ツールと設定
-  - ホームブリュー (Homebrew)
-  - インストール手順
-  - 基本的な使い方
-  - レイキャスト (Raycast)
-    - 設定とカスタマイズ
-  - アラクリティ (Alacritty)
-    - 設定ファイルとカスタムテーマ
-  - Zsh
-    - プラグインとテーマ
-    - エイリアスと関数
-  - tmux
-     - 基本的な設定
-     - プラグインとテーマ
-     - キーバインドとカスタマイズ
-  - Starship
-     - インストールと設定
-     - プロンプトカスタマイズ
-  - Neovim
-    - プラグインと設定ファイル
-    - カスタムキーバインドとテーマ
-4. カスタマイズとトラブルシューティング
-    - よくある質問
-    - トラブルシューティングのガイド
-    - 追加のカスタマイズオプション
-5. ライセンスと貢献
+- Alacritty config
+- Zsh config
+- Sharship config
+- tmux config
+- git config
+  - Lazygit config
+- Neovim config
+- vim config
+## Alacritty setup
+<!-- TODO: Alacritty Config -->
+## Zsh setup
+<!-- TODO: Zsh Config -->
+## Starship setup
+<!-- TODO: Starship Config -->
+## Tmux setup
+<!-- TODO: Starship Config -->
+## Git setup
+### Lazygit setup
+<!-- TODO: Starship Config -->
+## Neovim setup
+<!-- TODO: Neovim Config -->
+<!-- TODO: Image -->
+## Vim setup
+<!-- TODO: Vim Config -->
+<!-- TODO: Image -->
+## Reference
+  - [[プログラミング] dotfiles + GitHubを使って開発環境をコマンド１発で構築する方法](https://youtu.be/QZr33TQnIRk?si=wsxcdyGCcVgMw3pu)
+  - [lazy.nvimで複数のディレクトリからプラグインを読み込む
+](https://zenn.dev/sisi0808/articles/36ff184554ddd6)
+  - [sisi0808/dotfiles](https://github.com/sisi0808/dotfiles/)
+  - [TKG2800/dotfiles](https://github.com/TKG2800/dotfiles/)
+## License
+<!--5. ライセンスと貢献
     - ライセンス情報
     - 貢献ガイド
     - クレジット
