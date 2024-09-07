@@ -1,0 +1,16 @@
+#!/bin/sh
+
+set -e
+
+if [ ! -f /opt/homebrew/bin/brew ]; then
+  /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+fi
+
+if [ ! -d ~/dotfiles ]; then
+  cd ~
+  git clone https://github.com/TKG2800/dotfiles.git
+fi
+
+brew bundle -v --file=~/dotfiles/Brewfile
+
+stow -v -d ~/dotfiles/packages -t ~ git zsh vim 
