@@ -1,0 +1,162 @@
+# Don't print a new line at the start of the prompt
+# add_newline = false
+
+format = """
+[╭─accounts─>](bold blue) $username$gcloud$aws$kubernetes
+[┣─network──>](bold yellow) $localip
+[┣─system───>](green) $time$status$cmd_duration$hostname$memory_usage$jobs$battery
+[┣─project──>](bold red) $directory$rust$package$golang$terraform $docker_context
+[┣─git──────>](bold blue)$git_branch$git_status$git_commit
+[┣─metrics──>](bold red)$git_metrics
+[╰─cli──────](bold green)$character
+"""
+
+command_timeout = 500
+
+
+# Replace the "❯" symbol in the prompt with "➜"
+[character]
+success_symbol = "[➜](bold green)"
+error_symbol = "[Х](bold red)"
+
+
+[cmd_duration]
+show_milliseconds = true
+# format = "took [$duration](bold yellow) "
+
+[kubernetes]
+format = 'on [⛵ $context \(ns:$namespace\)](purple)'
+disabled = false
+# [kubernetes.context_aliases]
+# "dev.local.cluster.k8s" = "dev"
+
+[memory_usage]
+format = "with$symbol [${ram} ${ram_pct}( | ${swap} ${swap_pct})]($style) "
+disabled = false
+threshold = -1
+symbol = " "
+style = "bold dimmed green"
+
+[gcloud]
+style = "blue"
+format = '[$symbol$account(\($project\))]($style) '
+symbol = "️G⅁:☁️"
+[gcloud.region_aliases]
+us-central1 = "uc1"
+asia-northeast1 = "an1"
+
+[aws]
+format = '[$symbol$profile(\($region\))]($style) '
+style = "bold yellow"
+symbol = "∀⍵₷☁️☁️"
+[aws.region_aliases]
+ap-southeast-2 = "au"
+us-east-1 = "va"
+
+[package]
+format = " package: [🎁 $version](208 bold) "
+
+[docker_context]
+format = "via [🐋 $context](blue bold)"
+disabled = false
+only_with_files = true
+detect_folders = []
+
+[directory]
+truncation_length = 3
+truncation_symbol = "…/"
+home_symbol="~ $HOME"
+
+[username]
+style_user = "blue bold"
+style_root = "bold red"
+format = "user: [$user]($style) "
+disabled = false
+show_always = true
+
+[time]
+disabled = false
+format = '🕙 -> [\[ $time \]]($style) '
+
+[hostname]
+ssh_only = false
+format = 'on [$hostname](bold red) '
+trim_at = "."
+disabled = false
+
+[status]
+style = "red"
+symbol = "🚫"
+success_symbol = "🟢 SUCCESS"
+not_executable_symbol="🚫"
+not_found_symbol="🔍"
+format = '[\[$symbol$status\]]($style) '
+disabled = false
+
+[git_commit]
+commit_hash_length = 4
+tag_symbol = "x "
+format = "[\\($hash$tag\\)]($style) "
+style = "bold green"
+
+[git_branch]
+format = "on branch [$symbol$branch(:$remote_branch)]($style) "
+style = "bold green"
+symbol = " "
+
+[git_status]
+ahead = "⇡🏎💨${count}"
+diverged = "⇕⇡😵${ahead_count}⇣${behind_count}"
+behind = "⇣😰${count}"
+conflicted = "🏳"
+untracked = "🤷‍"
+stashed = "📦"
+modified = "📝"
+staged = '[++\($count\)](green)'
+renamed = "👅"
+deleted = "🗑"
+
+[git_metrics]
+added_style = "bold blue"
+disabled = false
+deleted_style = "bold red"
+format = '([ Added: +$added]($added_style))([ Deleted: -$deleted]($deleted_style) )'
+
+[rust]
+format = "rust: [🦀 $version](red bold)"
+
+[golang]
+format = "go: [🏎💨 $version](bold cyan) "
+
+[helm]
+format = "helm: [⎈ $version](bold white) "
+
+[jobs]
+symbol = "+ "
+threshold = 4
+format = "background [$symbol$number]($style) "
+
+[terraform]
+format = "[🏎💨 $version$workspace]($style) "
+
+[battery]
+full_symbol = "🔋"
+charging_symbol = "⚡️"
+discharging_symbol = "💀"
+
+[[battery.display]]  # "bold red" style when capacity is between 0% and 10%
+threshold = 10
+style = "bold red"
+
+[[battery.display]]  # "bold yellow" style when capacity is between 10% and 30%
+threshold = 30
+style = "bold yellow"
+
+[[battery.display]]
+threshold = 100
+style = "bold green"
+
+[localip]
+ssh_only = false
+format = "@[$localipv4](purple) "
+disabled = false

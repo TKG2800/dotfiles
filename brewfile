@@ -12,6 +12,8 @@ brew "lazygit"
 brew "docker-compose"
 brew "lazydocker"
 brew "openjdk"
+brew "fzf"
+# brew "zsh-autosuggestions"
 
 cask "alacritty"
 cask "google-chrome"

@@ -1,0 +1,28 @@
+------ Key Input ------
+vim.api.nvim_set_keymap('', '<Up>', '<Nop>', { noremap = true, silent = true })
+vim.api.nvim_set_keymap('', '<Down>', '<Nop>', { noremap = true, silent = true })
+vim.api.nvim_set_keymap('', '<Left>', '<Nop>', { noremap = true, silent = true })
+vim.api.nvim_set_keymap('', '<Right>', '<Nop>', { noremap = true, silent = true })
+vim.api.nvim_set_keymap('i', 'jj', '<Esc>', { noremap = true, silent = true })
+--- Window Split ---
+vim.api.nvim_set_keymap('n', 'ss', ':<C-u>sp<CR>', { noremap = true, silent = true })
+vim.api.nvim_set_keymap('n', 'sv', ':<C-u>vs<CR>', { noremap = true, silent = true })
+vim.api.nvim_set_keymap('n', 'sq', ':<C-u>q<CR>', { noremap = true, silent = true })
+vim.api.nvim_set_keymap('n', 'sQ', '<Nop>', { noremap = true, silent = true })
+vim.api.nvim_set_keymap('n', 'sj', ':<C-w>j', { noremap = true, silent = true })
+vim.api.nvim_set_keymap('n', 'sk', ':<C-w>k', { noremap = true, silent = true })
+vim.api.nvim_set_keymap('n', '<sl>', ':<C-w>l', { noremap = true, silent = true })
+vim.api.nvim_set_keymap('n', 'sh', ':<C-w>h', { noremap = true, silent = true })
+vim.api.nvim_set_keymap('n', 'sJ', ':<C-w>J', { noremap = true, silent = true })
+vim.api.nvim_set_keymap('n', 'sK', ':<C-w>K', { noremap = true, silent = true })
+vim.api.nvim_set_keymap('n', 'sL', ':<C-w>L', { noremap = true, silent = true })
+vim.api.nvim_set_keymap('n', 'sH', ':<C-w>H', { noremap = true, silent = true })
+vim.api.nvim_set_keymap('n', 's>', ':<C-w>>', { noremap = true, silent = true })
+vim.api.nvim_set_keymap('n', 's<', ':<C-w><', { noremap = true, silent = true })
+vim.api.nvim_set_keymap('n', 's+', ':<C-w>+', { noremap = true, silent = true })
+vim.api.nvim_set_keymap('n', 's-', ':<C-w>-', { noremap = true, silent = true })
+--- Tab ---
+vim.api.nvim_set_keymap('n', 'st', ':<C-w>tabnew<CR>', { noremap = true, silent = true })
+vim.api.nvim_set_keymap('n', 'sn', 'gt', { noremap = true, silent = true })
+vim.api.nvim_set_keymap('n', 'sp', 'gT', { noremap = true, silent = true })
+

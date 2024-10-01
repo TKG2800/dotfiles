@@ -1,0 +1,9 @@
+#!/usr/bin/env zsh
+
+# lsをlsdに置き換える
+if [ "$(command -v lsd)" ]; then
+  unalias -m 'ls'
+  alias ls='lsd'
+  alias ll='ls -al'
+  alias tree='lsd --tree'
+fi

@@ -1,0 +1,16 @@
+#GENERAL
+live_config_reload = true
+#[shell]
+
+[env]
+
+[window]
+opacity = 0.75
+startup_mode = "SimpleFullscreen"
+[scrolling]
+[font]
+size = 14
+[font.normal]
+family = "CartographCF Nerd Font"
+style = "Italic"
+

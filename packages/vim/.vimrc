@@ -25,7 +25,8 @@ set smartcase
 set wrapscan
 set hlsearch
 set incsearch
-"=== Key Input====
+" Plugins 
+"=== Key Input ====
 noremap <Up> <Nop>
 noremap <Down> <Nop>
 noremap <Left> <Nop>

@@ -1,0 +1,38 @@
+#!/user/bin/env zsh
+
+# Dotfilesに変更があるかを確認する条件
+if test -n "$(git -C ${DOTFILES_HOME} status --porcelain)" || #作業ツリーまたはインデックスに変更があるか確認
+   ! git -C ${DOTFILES_HOME} diff --exit-code --stat --cached origin/master > /dev/null ; then #リモートとの差分があるか確認
+  #変更がある場合のメッセージ
+  echo -e "\e[36m============== DOTFILES IS DIRTY =============\e[m"
+  echo -e "\e[33mThe dotfiles have been changed.\e[m"
+  echo -e "\e[33mPlease update them with the following command.\e[m"
+  echo -e " cd ${DOTFILES_HOME}"
+  echo -e " git add ."
+  echo -e " git commit -m \"updtate dotfiles\""
+  echo -e " git push origin master"
+  # echo -e "\e[36m==============================================\e[m"
+fi
+#タイプ別にGITステータスを分類する(Categorize git status by type)
+#Staged new files
+echo -e "\e[32m============ Added files (staged): ===========\e[m"
+git status --porcelain | grep '^A ' | sed 's/^A //' || echo " No files added."
+#Staged modified files
+echo -e "\e[34m=========== Modified files (staged): =========\e[m"
+git status --porcelain | grep '^M ' | sed 's/^M //' || echo " No files modified (staged)."
+#Unstaged modified files
+echo -e "\e[31m========== Modified files (unstaged): ========\e[m"
+git status --porcelain | grep '^ M' | sed 's/^ M//' || echo " No files modified (unstaged)."
+#staged deleted files
+echo -e "\e[31m=========== Deleted files (staged): ===========\e[m"
+git status --porcelain | grep '^D ' | sed 's/^D //' || echo " No files deleted."
+#Unstaged deleted files
+echo -e "\e[31m=========== Deleted files (unstaged): =========\e[m"
+git status --porcelain | grep '^ D' | sed 's/^ D//' || echo " No files deleted."
+#Renamed files
+echo -e "\e[35m=========== Renamed files: ====================\e[m"
+git status --porcelain | grep '^R ' | sed 's/^R //' || echo " No files renamed."
+#Untracked files
+echo -e "\e[33m=========== Untracked files: ==================\e[m"
+git status --porcelain | grep '^??' | sed 's/^?? //' || echo " No untracked files."
+echo -e "\e[36m===============================================\e[m"
