@@ -1,0 +1,21 @@
+#!/bin/sh
+set -e
+if [ ! -f /usr/local/bin/brew ]; then
+  /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+    echo >> /Users/tkg2800/.zprofile
+    echo 'eval "$(/usr/local/bin/brew shellenv)"' >> /Users/tkg2800/.zprofile
+    eval "$(/usr/local/bin/brew shellenv)"
+fi
+
+if [ ! -d ~/dotfiles ]; then
+  cd ~
+  git clone git@github.com:TKG2800/dotfiles.git
+fi
+
+brew bundle -v --file=~/dotfiles/Brewfile 
+
+if [ ! -d ~/.config ]; then
+    mkdir ~/.config
+fi
+
+stow -v -d ~/dotfiles/packages -t ~ zsh vim starship

@@ -1,0 +1,30 @@
+#!/bin/sh
+set -e
+
+# dotfiles にある Stow の設定をアンストウ（シンボリックリンクを削除）
+if [ -d ~/dotfiles ]; then
+  stow -v -D -d ~/dotfiles/packages -t ~ zsh vim starship
+fi
+
+# dotfiles ディレクトリの削除（必要なら）
+if [ -d ~/dotfiles ]; then
+  rm -rf ~/dotfiles
+fi
+
+# ~/.config ディレクトリを削除（dotfiles のものであれば）
+if [ -d ~/.config ]; then
+  echo "警告: ~/.config ディレクトリを完全に削除しますか？ (y/N)"
+  read confirm
+  if [ "$confirm" = "y" ]; then
+    rm -rf ~/.config
+  fi
+fi
+
+# Homebrew のアンインストール
+if [ -f /usr/local/bin/brew ]; then
+  /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/uninstall.sh)"
+fi
+
+# .zprofile から brew の設定を削除（オプション）
+sed -i '' '/eval "\$\(\/usr\/local\/bin\/brew shellenv\)"/d' ~/.zprofile
+
