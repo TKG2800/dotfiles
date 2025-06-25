@@ -1,0 +1,11 @@
+alias g='git'
+alias ga='git add .'
+alias gb='git branch'
+alias gc='git checkout'
+alias gco='git commit -m'
+alias gp='git pull'
+alias gs='git status'
+alias glo='git log --oneline -n 5'
+alias gloo='git log -n 1'
+alias gp='$ZSHHOME/git-repo-picker.sh'
+alias fg="$ZSHHOME/git_fzf_status.sh"
