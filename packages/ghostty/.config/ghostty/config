@@ -1,0 +1,7 @@
+background-opacity = 0.85
+fullscreen = non-native
+window-padding-x = 8
+window-padding-y = 8
+window-padding-balance = true
+font-family = "CartographCF Nerd Font"
+font-style = "Italic"

@@ -1,0 +1,70 @@
+#!/usr/bin/env bash
+set -e
+
+DOTFILES="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+
+# ------------------------------------------------------------------
+# 1. シェル環境の設定
+# ------------------------------------------------------------------
+echo "🐚 Setting up zsh..."
+if [ "$(dscl . -read ~/ UserShell)" = "UserShell: /bin/bash" ]; then
+    chsh -s /bin/zsh
+    # 権利変更処理(パスの指定を修正)
+    if [ -d /usr/local/share/zsh ]; then
+         sudo chmod -R 755 /usr/local/share/zsh
+         sudo chown -R root:staff /usr/local/share/zsh
+    fi
+fi
+
+# ------------------------------------------------------------------
+# 2. Zinit (Zsh Plugin Manager) のセットアップ
+# ------------------------------------------------------------------
+echo "⚡ Setting up Zinit..."
+ZINIT_HOME="${XDG_DATA_HOME:-${HOME}/.local/share}/zinit/zinit.git"
+if [ ! -d "$ZINIT_HOME" ]; then
+    mkdir -p "$(dirname "$ZINIT_HOME")"
+    bash -c "$(curl --fail --show-error --silent --location https://raw.githubusercontent.com/zdharma-continuum/zinit/HEAD/scripts/install.sh)"
+else
+    echo "⚠️  Zinit is already installed. Skipping."
+fi
+ 
+# -------------------------------------------------------------------------------------------------------
+# 3. Homebrew のセットアップ
+# -------------------------------------------------------------------------------------------------------
+echo "🍺 Homebrew..."
+if ! command -v brew &> /dev/null && [ ! -f /opt/homebrew/bin/brew ] && [ ! -f /usr/local/bin/brew ]; then
+    /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+fi
+
+# PATH を通す
+if [[ -f /opt/homebrew/bin/brew ]]; then
+    eval "$(/opt/homebrew/bin/brew shellenv)"
+elif [[ -f /usr/local/bin/brew ]]; then
+    eval "$(/usr/local/bin/brew shellenv)"
+fi
+
+# -------------------------------------------------
+# 4. パッケージのインストール(Brewfile)
+# -------------------------------------------------
+echo "📦 Installing packages with Homebrew Bundle..."
+if [ -f "$DOTFILES/Brewfile" ]; then
+    brew bundle -v --file "$DOTFILES/Brewfile"
+else
+    echo "⚠️  Brewfile not found at $DOTFILES/Brewfile"
+fi
+
+# --------------------------------------------------
+# 5. 設定ファイルのシンボリックリンク作成 (Stow)
+# --------------------------------------------------
+echo "🔗 Symlinking dotfiles with Stow..."
+if [ ! -d "$HOME/.config" ]; then
+   mkdir -p "$HOME/.config"
+fi
+
+if command -v stow &> /dev/null; then
+    stow -v -d "$DOTFILES/packages" -t ~ ghostty tmux zsh nvim
+else
+    echo "⚠️  stow is not installed. Skipping stow symlinking."
+fi
+
+echo "✨ All setups completed successfully!"
